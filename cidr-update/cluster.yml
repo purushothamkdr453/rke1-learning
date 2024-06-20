@@ -1,0 +1,57 @@
+cluster_name: rkelearning
+network:
+  plugin: canal
+  options:
+    canal_iface: ens4
+nodes:
+    - address: 10.165.0.25
+      user: purushotham
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-controlplane-1
+    - address: 10.165.0.26
+      user: purushotham
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-controlplane-2 
+    - address: 10.165.0.27 
+      user: purushotham
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-controlplane-3 
+    - address: 10.165.0.28 
+      user: purushotham
+      role:
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-worker-1 
+    - address: 10.165.0.29 
+      user: purushotham
+      role:
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-worker-2 
+    - address: 10.165.0.30 
+      user: purushotham
+      role:
+        - worker
+      ssh_key_path: /home/purushotham/cidr-update/ssh-key/purushotham 
+      hostname_override: rke-worker-3 
+services:
+    kube-controller:
+      cluster_cidr: 10.42.0.0/16
+      extra_args:
+          node-cidr-mask-size: '20'
+    kubelet:
+      extra_args:
+          max-pods: 4000
+

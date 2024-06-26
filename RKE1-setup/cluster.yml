@@ -2,7 +2,7 @@ cluster_name: rkelearning
 network:
   plugin: canal
   options:
-    canal_iface: <Interface>
+    canal_iface: enp0s8
 nodes:
     - address: <MASTER IPADDRESS>
       user: vagrant

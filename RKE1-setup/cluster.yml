@@ -1,0 +1,20 @@
+cluster_name: rkelearning
+network:
+  plugin: canal
+  options:
+    canal_iface: <Interface>
+nodes:
+    - address: <MASTER IPADDRESS>
+      user: vagrant
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: <MASTERNODE KEY>
+      hostname_override: kmaster
+    - address: <WORKERNODE1 IPADDRESS>
+      user: vagrant
+      role:
+        - worker
+      ssh_key_path: <WORKERNODE1 KEY>
+      hostname_override: kworker1

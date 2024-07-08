@@ -1,0 +1,15 @@
+sync:
+  nodes:
+    enabled: true
+  persistentvolumes:
+    enabled: true
+  hoststorageclasses:
+    enabled: true
+syncer:
+  extraArgs:
+  - --tls-san=<Node1 IPAddress>,<Node2 IPAddress>....,<Noden IPAddress>
+plugin:
+  import-secrets:
+    version: v2
+    image: ghcr.io/loft-sh/vcluster-example-import-secrets:v1
+    imagePullPolicy: IfNotPresent
